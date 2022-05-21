@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity(), ImageListener {
             activityMainBinding.recyclerView.layoutManager = GridLayoutManager(this, 2)
         }
         activityMainBinding.recyclerView.itemAnimator = DefaultItemAnimator()
+        activityMainBinding.recyclerView.setHasFixedSize(true)
         activityMainBinding.recyclerView.adapter = adapter
     }
 
