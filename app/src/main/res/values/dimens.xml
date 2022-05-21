@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_height_48dp">48dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="elevation_3dp">3dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="elevation_4dp">4dp</dimen>
+    <dimen name="text_size_19">19sp</dimen>
+    <dimen name="margin_10dp">10dp</dimen>
+
+</resources>

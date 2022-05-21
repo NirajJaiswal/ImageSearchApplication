@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
+
+        <include
+            android:id="@+id/app_bar"
+            layout="@layout/material_toolbar" />
+
+        <LinearLayout
+            android:id="@+id/layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/app_bar"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:layout_marginBottom="@dimen/margin_8dp"
+                android:background="@color/light_blue"
+                android:elevation="@dimen/elevation_4dp"
+                android:layout_weight="8">
+
+                <ImageView
+                    android:id="@+id/search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="start|center"
+                    android:layout_marginStart="@dimen/margin_16dp"
+                    android:src="@drawable/ic_baseline_search_24"
+                    android:visibility="visible"
+                    android:contentDescription="@string/search"/>
+
+
+                <EditText
+                    android:id="@+id/edit_text_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/layout_height_48dp"
+                    android:layout_marginStart="@dimen/margin_40dp"
+                    android:layout_marginEnd="@dimen/margin_40dp"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:elevation="@dimen/elevation_3dp"
+                    android:hint="@string/type_here_for_image_search"
+                    android:padding="@dimen/margin_8dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/image_search_hint_color"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8dp"
+                android:elevation="@dimen/elevation_4dp"
+                android:gravity="center"
+                android:minHeight="@dimen/layout_height_48dp"
+                android:text="@string/search"
+                android:layout_weight="2"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/layout"
+            android:id="@+id/recycler_view"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/layout"
+            android:layout_centerInParent="true"
+            android:id="@+id/progress_bar"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:text="@string/no_internet"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            android:id="@+id/tv_no_internet"
+            />
+    </RelativeLayout>
+
+
+</layout>

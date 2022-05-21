@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="image"
+            type="com.example.imagesearchapplication.model.Hit" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/material_toolbar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar_layout">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbar_layout">
+
+                <ImageView
+                    android:id="@+id/iv_large"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_10dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/image"
+                    android:elevation="@dimen/elevation_4dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/loading" />
+
+                <TextView
+                    android:id="@+id/tv_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_large"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:text="@string/tag"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_19"
+                     />
+
+                <TextView
+                    android:id="@+id/tv_image_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_large"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:layout_toEndOf="@id/tv_tag"
+                    android:text="@{image.tags}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_19"
+                   />
+
+                <TextView
+                    android:id="@+id/tv_resolution"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tag"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:text="@string/resolution"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_19"
+                     />
+
+                <TextView
+                    android:id="@+id/tv_image_resolution"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_tag"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:layout_toEndOf="@id/tv_resolution"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_19"
+                    />
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_resolution"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:text="@string/upload_by"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_19"
+                   />
+
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_resolution"
+                    android:layout_margin="@dimen/margin_10dp"
+                    android:layout_toEndOf="@id/user_name"
+                    android:text="@{image.user}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_19"
+                     />
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+</layout>
