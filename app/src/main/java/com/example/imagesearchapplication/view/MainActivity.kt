@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity(), ImageListener {
             viewModel.getValue(inputText.toString())
             activityMainBinding.tvNoInternet.visibility = View.GONE
             setupObservers()
+            activityMainBinding.recyclerView.scrollToPosition(0)
 
         }
     }
@@ -115,7 +116,7 @@ class MainActivity : AppCompatActivity(), ImageListener {
     }
 
     private fun setupObservers() {
-        viewModel.getImages().observe(this) {
+        viewModel.data.observe(this) {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
