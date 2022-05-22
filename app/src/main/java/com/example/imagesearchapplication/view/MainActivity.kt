@@ -41,11 +41,13 @@ class MainActivity : AppCompatActivity(), ImageListener {
         activityMainBinding.searchButton.setOnClickListener {
             Util.hideKeyboard(this, it)
             val inputText = activityMainBinding.editTextSearch.text
-            viewModel.getValue(inputText.toString())
-            activityMainBinding.tvNoInternet.visibility = View.GONE
-            setupObservers()
-            activityMainBinding.recyclerView.scrollToPosition(0)
-
+            if(null !=inputText && inputText.isNotEmpty()){
+                viewModel.getValue(inputText.toString())
+                activityMainBinding.recyclerView.scrollToPosition(0)
+            }
+            else{
+                activityMainBinding.editTextSearch.error = "Please enter"
+            }
         }
     }
 
@@ -56,6 +58,8 @@ class MainActivity : AppCompatActivity(), ImageListener {
             object : BroadcastReceiver() {
                 override fun onReceive(context: Context, intent: Intent) {
                     try {
+                        setupUI()
+                        setupObservers()
                         if (!Util.isOnline(context)) {
                             activityMainBinding.searchButton.setBackgroundColor(
                                 ContextCompat.getColor(
@@ -63,9 +67,10 @@ class MainActivity : AppCompatActivity(), ImageListener {
                                     R.color.image_search_hint_color
                                 )
                             )
+                            retrieveList(arrayListOf())
                             activityMainBinding.searchButton.isEnabled = false
                             activityMainBinding.tvNoInternet.visibility = View.VISIBLE
-                            //     Log.e("Niraj", "Online Connect Intenet ")
+                            //     Log.e("Niraj", "Conectivity Failure !!! ")
                         } else {
                             activityMainBinding.searchButton.setBackgroundColor(
                                 ContextCompat.getColor(
@@ -75,10 +80,9 @@ class MainActivity : AppCompatActivity(), ImageListener {
                             )
                             activityMainBinding.searchButton.isEnabled = true
                             activityMainBinding.tvNoInternet.visibility = View.GONE
-                            //     Log.e("Niraj", "Conectivity Failure !!! ")
+                            //Log.e("Niraj", "Online Connect Intenet ")
                         }
-                        setupUI()
-                        setupObservers()
+
                     } catch (e: NullPointerException) {
                         e.printStackTrace()
                     }
@@ -153,6 +157,7 @@ class MainActivity : AppCompatActivity(), ImageListener {
         intent.putExtra("detailImage", image)
         startActivity(intent)
     }
+
 
 
 }
